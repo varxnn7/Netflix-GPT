@@ -30,6 +30,12 @@
 - Update Store with Trailor Video
 - Embedded the youtube video and make it autoplay and mute 
 - Tailwind Classes to make Main Container look awesome 
+- Build Secondary Component
+- Build MovieList Component
+- Build MovieCard Component
+- TMDB image CDN URL
+- Made the Browse page amazing with Tailwind CSS
+- usePopularMovies custom hook
 
 # Features
 
