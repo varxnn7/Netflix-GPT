@@ -4,6 +4,7 @@ export const LOGO = "https://help.nflxext.com/helpcenter/OneTrust/oneTrust_produ
 export const USER_AVATAR= "https://occ-0-3647-3646.1.nflxso.net/dnm/api/v6/SO2HoVCx33X8phZh2pZZmQ4QgNY/AAAABf7EMnYmiegBSxWjOTXkzTXkTcjuH2w4uIhr6OStUdFTLZtS6UmB0s8Ht7poTk5TE1f2ppZf4Cy7eYIEo26z_OyNP7j36CA.png?r=e6e";
 export const BG_URL = "https://assets.nflxext.com/ffe/siteui/vlv3/d825497c-4678-4f25-90da-6637ec2cf892/web/IN-en-20260316-TRIFECTA-perspective_b65994ee-c5aa-4a5e-99ff-d137eebb94ef_medium.jpg";
 
+export const OPENAI_KEY = import.meta.env.VITE_OPENAI_KEY || "";
 
 export const API_OPTIONS = {
   method: 'GET',
@@ -17,3 +18,9 @@ export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
 
 
 // https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg
+
+export const SUPPORTED_LANGUAGES = [
+  { identifies: "en", name: "English"},
+  { identifies: "hi", name: "Hindi"},
+  { identifies: "es", name: "Spanish"},
+];
