@@ -8,6 +8,7 @@ import useTrendingMovies from '../hooks/useTrendingMovies';
 import useUpcomingMovies from '../hooks/useUpcomingMovies';
 import useHorrorMovies from '../hooks/useHorrorMovies';
 import GptSearch from './GptSearch';
+import Footer from './Footer';
 import { useSelector } from 'react-redux';
 
 const Browse = () => {
@@ -29,6 +30,7 @@ const Browse = () => {
         <SecondaryContainer />
         </>
       )}
+      <Footer />
     </div>
   )
 }

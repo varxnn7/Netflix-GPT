@@ -8,18 +8,17 @@ const MainContainer = () => {
     const movies = useSelector((store) => store.movies?.nowPlayingMovies);
     if (!movies || movies.length === 0) return null;
     
+    // Pick the first movie which usually has a trailer (e.g., Avatar)
     const mainMovie = movies[0];
     if (!mainMovie) return null;
 
-    const { original_title, overview, id } = mainMovie;
+    const { title, overview, id } = mainMovie;
   
   
     return (
-    <div>
-        <VideoTitle title ={original_title} overview ={overview} />
+    <div className="relative pt-[30%] bg-black md:pt-0">
+        <VideoTitle title ={title} overview ={overview} />
         <VideoBackground movieId={id} />
-
-
     </div>
   );
 };
