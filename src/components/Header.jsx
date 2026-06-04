@@ -14,15 +14,39 @@ const Header = () => {
   const navigate = useNavigate();
   const user = useSelector(store => store.user);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [toast, setToast] = useState(null);
 
   const handleSignOut = () => {
     signOut(auth).then(() => {
-    
       // Sign-out successful.
     }).catch(() => {
       navigate("/error");
-      // An error happened.
-    }); 
+    });
+  };
+
+  const showToast = (message) => {
+    setToast(message);
+    setTimeout(() => setToast(null), 3000);
+  };
+
+  const handleManageProfiles = () => {
+    setIsDropdownOpen(false);
+    showToast('⚙️  Profile management coming soon!');
+  };
+
+  const handleTransferProfile = () => {
+    setIsDropdownOpen(false);
+    showToast('🚫  Profile transfer is not available on this plan.');
+  };
+
+  const handleAccount = () => {
+    setIsDropdownOpen(false);
+    window.open('https://www.netflix.com/YourAccount', '_blank');
+  };
+
+  const handleHelpCentre = () => {
+    setIsDropdownOpen(false);
+    window.open('https://help.netflix.com', '_blank');
   };
    useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -72,6 +96,7 @@ const handleGptSearchClick = () => {
   };
 
   return (
+    <>
     <div className="absolute w-screen px-4 md:px-8 py-2 bg-gradient-to-b from-black z-50 flex flex-col md:flex-row justify-between items-center sm:bg-black md:bg-transparent">
       <img
         className="w-32 md:w-44 mx-auto md:mx-0 cursor-pointer"
@@ -128,19 +153,19 @@ const handleGptSearchClick = () => {
                 </div>
 
                 <div className="flex flex-col text-[13px] text-gray-300 font-semibold border-t border-gray-700 pt-3 pb-2">
-                  <div className="flex items-center px-4 py-2 hover:underline cursor-pointer group/action">
+                  <div onClick={handleManageProfiles} className="flex items-center px-4 py-2 hover:underline cursor-pointer group/action">
                     <svg fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6 mr-3 text-gray-400 group-hover/action:text-white"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
                     Manage Profiles
                   </div>
-                  <div className="flex items-center px-4 py-2 hover:underline cursor-pointer group/action">
+                  <div onClick={handleTransferProfile} className="flex items-center px-4 py-2 hover:underline cursor-pointer group/action">
                     <svg fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6 mr-3 text-gray-400 group-hover/action:text-white"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
                     Transfer Profile
                   </div>
-                  <div className="flex items-center px-4 py-2 hover:underline cursor-pointer group/action">
+                  <div onClick={handleAccount} className="flex items-center px-4 py-2 hover:underline cursor-pointer group/action">
                     <svg fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6 mr-3 text-gray-400 group-hover/action:text-white"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
                     Account
                   </div>
-                  <div className="flex items-center px-4 py-2 hover:underline cursor-pointer group/action">
+                  <div onClick={handleHelpCentre} className="flex items-center px-4 py-2 hover:underline cursor-pointer group/action">
                     <svg fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6 mr-3 text-gray-400 group-hover/action:text-white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>
                     Help Centre
                   </div>
@@ -162,11 +187,16 @@ const handleGptSearchClick = () => {
         </div>
       )}
     
-    </div>  
+    </div>
 
-
-
-  )
-}   
+    {/* Toast notification */}
+    {toast && (
+      <div className="fixed bottom-6 right-6 z-[999999] bg-zinc-800 text-white text-sm font-medium px-5 py-3 rounded-lg shadow-2xl border border-zinc-600 animate-fadeInUp max-w-xs">
+        {toast}
+      </div>
+    )}
+  </>
+  );
+}
 
 export default Header;
