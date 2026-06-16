@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { auth } from "../utils/firebase";
 import { useSelector } from 'react-redux';
 import { LOGO, USER_AVATAR } from '../utils/constants';
@@ -12,6 +12,7 @@ import { changeLanguage } from '../utils/configSlice';
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const user = useSelector(store => store.user);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [toast, setToast] = useState(null);
@@ -56,17 +57,26 @@ const Header = () => {
         const {uid, email, displayName,photoURL} = user;
         dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
 
-        navigate("/browse");
+        // Only redirect to browse if on the login page
+        if (location.pathname === '/') {
+          navigate("/browse");
+        }
       } else {
         // User is signed out
         dispatch(removeUser());
-        navigate("/");
-      
+        // Only redirect to login if on a protected page
+        const isPublicRoute =
+          location.pathname === '/' ||
+          location.pathname === '/contact' ||
+          location.pathname.startsWith('/info/');
+        if (!isPublicRoute) {
+          navigate("/");
+        }
       }
     });
     // Unsubscribe when my component unmounts
     return () => unsubscribe();
-  }, [dispatch, navigate])
+  }, [dispatch, navigate, location.pathname])
 
 
 const handleGptSearchClick = () => {
