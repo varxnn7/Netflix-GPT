@@ -107,7 +107,7 @@ const handleGptSearchClick = () => {
 
   return (
     <>
-    <div className="absolute w-screen px-4 md:px-8 py-2 bg-gradient-to-b from-black z-50 flex flex-col md:flex-row justify-between items-center sm:bg-black md:bg-transparent">
+    <div className="absolute top-0 left-0 w-full px-4 md:px-12 py-3 bg-gradient-to-b from-black/90 via-black/40 to-transparent z-50 flex flex-col md:flex-row justify-between items-center">
       <img
         className="w-32 md:w-44 mx-auto md:mx-0 cursor-pointer"
         src={LOGO}

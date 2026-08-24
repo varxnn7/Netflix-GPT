@@ -3,22 +3,18 @@ import VideoTitle from "./VideoTitle";
 import VideoBackground from "./VideoBackground";
 
 const MainContainer = () => {
-    
-    
-    const movies = useSelector((store) => store.movies?.nowPlayingMovies);
-    if (!movies || movies.length === 0) return null;
-    
-    // Pick the first movie which usually has a trailer (e.g., Avatar)
-    const mainMovie = movies[0];
-    if (!mainMovie) return null;
+  const movies = useSelector((store) => store.movies?.nowPlayingMovies);
+  if (!movies || movies.length === 0) return null;
 
-    const { id } = mainMovie;
-  
-  
-    return (
-    <div className="relative pt-[30%] bg-black md:pt-0">
-        <VideoTitle movie={mainMovie} />
-        <VideoBackground movieId={id} />
+  const mainMovie = movies[0];
+  if (!mainMovie) return null;
+
+  const { id } = mainMovie;
+
+  return (
+    <div className="relative w-full h-[65vh] sm:h-[75vh] md:h-[85vh] lg:h-[95vh] overflow-hidden bg-black">
+      <VideoBackground movieId={id} />
+      <VideoTitle movie={mainMovie} />
     </div>
   );
 };

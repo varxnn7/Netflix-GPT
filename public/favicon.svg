@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="netflix-red-left" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#B20710" />
+      <stop offset="100%" stop-color="#E50914" />
+    </linearGradient>
+    <linearGradient id="netflix-red-right" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#B20710" />
+      <stop offset="100%" stop-color="#E50914" />
+    </linearGradient>
+    <linearGradient id="netflix-red-diag" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E50914" />
+      <stop offset="50%" stop-color="#DB0000" />
+      <stop offset="100%" stop-color="#831010" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.8"/>
+    </filter>
+  </defs>
+  <!-- Background rounded box -->
+  <rect width="64" height="64" rx="14" fill="#141414" />
+  <g transform="translate(13, 8)">
+    <!-- Left Vertical Bar -->
+    <path d="M0 0 L12 0 L12 48 L0 48 Z" fill="url(#netflix-red-left)" />
+    <!-- Right Vertical Bar -->
+    <path d="M26 0 L38 0 L38 48 L26 48 Z" fill="url(#netflix-red-right)" />
+    <!-- Diagonal Ribbon Bar with Shadow -->
+    <path d="M0 0 L13 0 L38 48 L25 48 Z" fill="url(#netflix-red-diag)" filter="url(#shadow)" />
+  </g>
+</svg>
