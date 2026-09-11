@@ -249,5 +249,5 @@ const FooterDetailModal = ({ itemId, onClose }) => {
 
   return ReactDOM.createPortal(modalContent, document.body);
 };
-
 export default FooterDetailModal;
+
