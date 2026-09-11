@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import Header from './Header';
 import MovieList from './MovieList';
 import Footer from './Footer';
+import Chatbot from './Chatbot';
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies';
 import useActionMovies from '../hooks/useActionMovies';
 import useComedyMovies from '../hooks/useComedyMovies';
@@ -52,6 +53,7 @@ const MoviesPage = () => {
         <MovieList title="Top Rated" movies={movies.topRatedMovies} />
       </div>
       <Footer />
+      <Chatbot />
     </div>
   );
 };

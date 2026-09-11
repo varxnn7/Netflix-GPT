@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import Header from './Header';
 import MovieList from './MovieList';
 import Footer from './Footer';
+import Chatbot from './Chatbot';
 import useUpcomingMovies from '../hooks/useUpcomingMovies';
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies';
 import useTrendingMovies from '../hooks/useTrendingMovies';
@@ -39,6 +40,7 @@ const NewAndPopularPage = () => {
         <MovieList title="🎬 Popular Right Now" movies={movies.popularMovies} />
       </div>
       <Footer />
+      <Chatbot />
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import Header from './Header';
 import MovieList from './MovieList';
 import Footer from './Footer';
+import Chatbot from './Chatbot';
 import useTrendingMovies from '../hooks/useTrendingMovies';
 import usePopularMovies from '../hooks/usePopularMovies';
 import useCrimeMovies from '../hooks/useCrimeMovies';
@@ -40,6 +41,7 @@ const ShowsPage = () => {
         <MovieList title="Thriller" movies={movies.thrillerMovies} />
       </div>
       <Footer />
+      <Chatbot />
     </div>
   );
 };

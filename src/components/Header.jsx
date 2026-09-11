@@ -252,14 +252,23 @@ const Header = () => {
                 </svg>
               </button>
 
-              {/* Kids Badge */}
+              {/* Children Badge — Netflix-style with colourful kids icon + label */}
               <button
                 onClick={() => navigate('/browse')}
-                className="hidden md:flex items-center justify-center rounded px-1.5 py-0.5 border border-white/30 hover:border-white transition-colors"
-                title="Kids"
+                className="hidden md:flex items-center gap-1.5 group transition-opacity hover:opacity-80"
+                title="Children"
               >
-                <span className="text-white text-[11px] font-black tracking-tight leading-none">
+                {/* Colourful kids icon tile */}
+                <div
+                  className="w-7 h-7 rounded-md flex items-center justify-center text-[10px] font-black text-white leading-none overflow-hidden flex-shrink-0"
+                  style={{
+                    background: 'linear-gradient(135deg,#4285F4 0%,#EA4335 33%,#FBBC05 66%,#34A853 100%)',
+                  }}
+                >
                   kids
+                </div>
+                <span className="text-white text-sm font-medium">
+                  Children
                 </span>
               </button>
 
@@ -269,6 +278,7 @@ const Header = () => {
                   className="flex items-center gap-1.5 cursor-pointer"
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 >
+                  {/* Profile avatar tile */}
                   <div
                     className={`w-8 h-8 rounded-md flex-shrink-0 border-2 transition-colors overflow-hidden ${
                       isDropdownOpen ? 'border-white' : 'border-transparent hover:border-white'
@@ -276,22 +286,14 @@ const Header = () => {
                     style={{ background: activeProfile?.color || '#4169E1' }}
                   >
                     {user?.photoURL ? (
-                      <img src={user.photoURL} alt="avatar" className="w-full h-full object-cover" />
+                      <img src={user.photoURL} alt="avatar" className="w-full h-full object-cover" onError={(e)=>{e.target.style.display='none'}} />
                     ) : (
-                      <div className="w-full h-full relative">
-                        {/* Mini smiley */}
-                        <div className="absolute top-[35%] left-[27%] w-[11%] h-[11%] bg-white rounded-full" />
-                        <div className="absolute top-[35%] right-[27%] w-[11%] h-[11%] bg-white rounded-full" />
-                        <div
-                          className="absolute bottom-[28%] w-[46%] h-[22%] left-[27%]"
-                          style={{
-                            borderBottom: '2px solid white',
-                            borderLeft: '2px solid transparent',
-                            borderRight: '2px solid transparent',
-                            borderRadius: '0 0 100px 100px',
-                          }}
-                        />
-                      </div>
+                      /* Smiley face SVG */
+                      <svg viewBox="0 0 32 32" fill="none" className="w-full h-full">
+                        <circle cx="11" cy="13" r="2" fill="white" />
+                        <circle cx="21" cy="13" r="2" fill="white" />
+                        <path d="M10 20 Q16 25 22 20" stroke="white" strokeWidth="2" strokeLinecap="round" fill="none" />
+                      </svg>
                     )}
                   </div>
                   <svg

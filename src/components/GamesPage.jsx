@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import Chatbot from './Chatbot';
 
 const GamesPage = () => {
   const games = [
@@ -108,6 +109,7 @@ const GamesPage = () => {
         </div>
       </div>
       <Footer />
+      <Chatbot />
     </div>
   );
 };

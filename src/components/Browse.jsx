@@ -19,6 +19,7 @@ import useTopRatedMovies from '../hooks/useTopRatedMovies';
 import useAwardWinnersMovies from '../hooks/useAwardWinnersMovies';
 import GptSearch from './GptSearch';
 import Footer from './Footer';
+import Chatbot from './Chatbot';
 import { useSelector } from 'react-redux';
 
 const Browse = () => {
@@ -53,6 +54,7 @@ const Browse = () => {
         </>
       )}
       <Footer />
+      <Chatbot />
     </div>
   )
 }
